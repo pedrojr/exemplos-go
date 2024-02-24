@@ -28,8 +28,8 @@ func slowRoutine() {
 
 func main() {
 	go func() {
-		http.ListenAndServe(":6060", nil)
-		//http://localhost:6060/debug/pprof/
+		fmt.Println("Servidor pprof iniciado em http://localhost:6060/debug/pprof/")
+		http.ListenAndServe("localhost:6060", nil)
 	}()
 
 	go slowRoutine()

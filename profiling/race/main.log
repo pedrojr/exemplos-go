@@ -1,0 +1,36 @@
+go run -race .\main.go
+
+Goroutine 0 tentando adquirir o lock...
+Goroutine 3 tentando adquirir o lock...
+Goroutine 2 tentando adquirir o lock...
+Goroutine 4 tentando adquirir o lock...
+Goroutine 6 tentando adquirir o lock...
+Goroutine 5 tentando adquirir o lock...
+Goroutine 1 tentando adquirir o lock...
+Goroutine 8 tentando adquirir o lock...
+Goroutine 7 tentando adquirir o lock...
+Goroutine 9 tentando adquirir o lock...
+Goroutine 0 incrementou o contador
+Goroutine 3 incrementou o contador
+Goroutine 2 incrementou o contador
+Goroutine 4 incrementou o contador
+==================
+WARNING: DATA RACE
+Read at 0x00000063b650 by main goroutine:
+  main.main()
+      C:/GitHub/exemplos-go/profiling/race/main.go:20 +0xc4
+
+Previous write at 0x00000063b650 by goroutine 11:
+  main.incrementCounter()
+      C:/GitHub/exemplos-go/profiling/race/main.go:30 +0x11d
+  main.main.func1()
+      C:/GitHub/exemplos-go/profiling/race/main.go:16 +0x39
+
+Goroutine 11 (finished) created at:
+  main.main()
+      C:/GitHub/exemplos-go/profiling/race/main.go:16 +0x77
+==================
+Valor final do contador: 4
+Goroutine 6 incrementou o contador
+Found 1 data race(s)
+exit status 66
